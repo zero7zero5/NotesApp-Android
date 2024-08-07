@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.notes.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/homeToAdd"
+            app:destination="@id/addFragment"
+            app:launchSingleTop="true"
+             />
+        <action
+            android:id="@+id/homeToEdit"
+            app:destination="@id/editFragment"
+            app:launchSingleTop="true"
+             />
+    </fragment>
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.example.notes.fragments.EditFragment"
+        android:label="fragment_edit"
+        tools:layout="@layout/fragment_edit" >
+        <action
+            android:id="@+id/editToHome"
+            app:destination="@id/homeFragment"
+            app:launchSingleTop="true" />
+        <argument android:name="note" app:argType="com.example.notes.model.Note" app:nullable="true"/>
+        <argument android:name="color" app:argType="integer" app:nullable="false"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.example.notes.fragments.AddFragment"
+        android:label="fragment_add"
+        tools:layout="@layout/fragment_add" >
+        <action
+            app:launchSingleTop="true"
+            android:id="@+id/addToHome"
+            app:destination="@id/homeFragment" />
+    </fragment>
+</navigation>
